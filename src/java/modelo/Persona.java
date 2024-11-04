@@ -9,19 +9,18 @@ package modelo;
  * @author edyeh
  */
 abstract class Persona {
-    private int id;
-    private String nombres,apellidos,direccion,telefono,fecha_nacimiento;
-
+     private int id;
+    private String nombres, apellidos, telefono, genero, fecha_ingreso;
     public Persona(){}
-    public Persona(int id, String nombres, String apellidos, String direccion, String telefono, String fecha_nacimiento) {
+    public Persona(int id, String nombres, String apellidos, String telefono, String genero, String fecha_ingreso) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.direccion = direccion;
         this.telefono = telefono;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.genero = genero;
+        this.fecha_ingreso = fecha_ingreso;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -46,14 +45,6 @@ abstract class Persona {
         this.apellidos = apellidos;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -62,20 +53,24 @@ abstract class Persona {
         this.telefono = telefono;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
-  public int agregar(){return 0;}
-  public int modificar (){return 0;}
-  public int eliminar (){return 0;}
-  
+
+    public String getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFecha_ingreso(String fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
+    }
     
+    public int agregar(){ return 0;}
+    public int modificar (){return 0;}
+    public int eliminar (){return 0;}
     
 }
-
-    
-

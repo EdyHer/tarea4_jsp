@@ -10,15 +10,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.Empleado;
+import modelo.Ventas;
 
 /**
  *
  * @author edyeh
  */
-public class sr_empleado extends HttpServlet {
+public class sr_ventas extends HttpServlet {
 
-     /**
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -27,7 +27,7 @@ public class sr_empleado extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Empleado empleado;
+    Ventas ventas;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -36,36 +36,35 @@ public class sr_empleado extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet sr_empleado</title>");            
+            out.println("<title>Servlet sr_puesto</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>HOLA</h1>");
-            empleado = new Empleado(Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_direccion"),request.getParameter("txt_dpi"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_telefono"),request.getParameter("drop_genero"),request.getParameter("txt_f_ingreso"));
+            ventas = new Ventas(Integer.valueOf(request.getParameter("txt_id_venta")),Integer.valueOf(request.getParameter("txt_no_factura")),Integer.valueOf(request.getParameter("drop_cliente")),Integer.valueOf(request.getParameter("drop_empleado")),request.getParameter("txt_serie"),request.getParameter("txt_fecha_factura"),request.getParameter("txt_nit"),request.getParameter("txt_correo"),Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_telefono"),request.getParameter("drop_genero"),request.getParameter("txt_fecha_ingreso"));
             //boton agregar
                 if("agregar".equals(request.getParameter("btn_agregar"))){
-                    if(empleado.agregar() > 0){ 
-                        response.sendRedirect("empleados.jsp");
+                    if(ventas.agregar() > 0){ 
+                        response.sendRedirect("ventas.jsp");
                     }else{
                         out.println("<h1>No se Agrego...........</h1>");
-                        out.println("<a href ='empleados.jsp'>Regresar</a>");
+                        out.println("<a href ='ventas.jsp'>Regresar</a>");
                     }
                 }
                 //boton modificar
                 if("modificar".equals(request.getParameter("btn_modificar"))){
-                    if(empleado.modificar() > 0){ 
-                        response.sendRedirect("empleados.jsp");
+                    if(ventas.modificar() > 0){ 
+                        response.sendRedirect("ventas.jsp");
                     }else{
                         out.println("<h1>No se modifico...........</h1>");
-                        out.println("<a href ='empleados.jsp'>Regresar</a>");
+                        out.println("<a href ='ventas.jsp'>Regresar</a>");
                     }
                 }
                 //boton eliminar
                 if("eliminar".equals(request.getParameter("btn_eliminar"))){
-                    if(empleado.eliminar() > 0){ 
-                    response.sendRedirect("empleados.jsp");
+                    if(ventas.eliminar() > 0){ 
+                    response.sendRedirect("ventas.jsp");
                     }else{
                         out.println("<h1>No se eliminar...........</h1>");
-                        out.println("<a href ='empleados.jsp'>Regresar</a>");
+                        out.println("<a href ='ventas.jsp'>Regresar</a>");
                     }
                 }
             out.println("</body>");
